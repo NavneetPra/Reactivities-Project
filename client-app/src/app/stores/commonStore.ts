@@ -1,4 +1,5 @@
 import { makeAutoObservable, reaction } from "mobx";
+import { history } from "../..";
 import { ServerError } from "../models/serverError";
 
 export default class CommonStore {
@@ -31,5 +32,9 @@ export default class CommonStore {
 
   setAppLoaded = () => {
     this.appLoaded = true;
+  }
+
+  redirect = (path: string) => {
+    history.push(path);
   }
 }

@@ -1,12 +1,13 @@
 import { ErrorMessage, Form, Formik } from 'formik';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import { Button, Header, Label } from 'semantic-ui-react';
+import { Button, Container, Header, Label } from 'semantic-ui-react';
 import MyTextInput from '../../app/common/form/MyTextInput';
 import { useStore } from '../../app/stores/store';
+import RegisterForm from './RegisterForm';
 
 export default observer(function LoginForm() {
-  const { userStore } = useStore();
+  const { userStore, modalStore } = useStore();
 
   return (
     <Formik 
@@ -20,6 +21,9 @@ export default observer(function LoginForm() {
           <MyTextInput name='password' placeholder='Password' type='password' />
           <ErrorMessage name='error' render={() => <Label style={{marginBottom: 15}} basic color='red' content={errors.error} />} />
           <Button disabled={!isValid || !dirty || isSubmitting} loading={isSubmitting} positive content='Login' type='submit' fluid />
+          <Container fluid textAlign='center'>
+            <Label color='teal' size='small' basic pointing>Don't have an account? <Button size='small' color='teal' basic as={Label} onClick={() => modalStore.openModal(<RegisterForm />)}>Register</Button>.</Label>
+          </Container>
         </Form>
       )}
     </Formik>
