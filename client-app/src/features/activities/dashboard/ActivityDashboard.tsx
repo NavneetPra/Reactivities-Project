@@ -18,7 +18,7 @@ export default observer(function ActivityDashboard() {
       modalStore.openModal(<LoginForm />);
       commonStore.redirect('/');
     }
-  }, [activityRegistry.size, loadActivities, modalStore, commonStore]);
+  }, [activityRegistry.size, loadActivities, modalStore, commonStore, userStore]);
 
   if (activityStore.loadingInitial) return <LoadingComponent content='Loading activities...' />
 
