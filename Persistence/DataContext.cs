@@ -30,5 +30,10 @@ namespace Persistence
         .WithMany(a => a.Attendees)
         .HasForeignKey(aa => aa.ActivityId);
     }
+
+    public Task FirstOrDefaultAsync()
+    {
+      throw new NotImplementedException();
+    }
   }
 }
