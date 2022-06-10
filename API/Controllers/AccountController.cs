@@ -83,7 +83,7 @@ namespace API
         .Include(p => p.Photos)
         .FirstOrDefaultAsync(x => x.Email == User.FindFirstValue(ClaimTypes.Email));
 
-      return CreateUserObject(user);
+      return user != null ? CreateUserObject(user) : null;
     }
 
     private UserDto CreateUserObject(AppUser user)
